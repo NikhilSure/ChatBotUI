@@ -1,1 +1,59 @@
-<p>chat-home works!</p>
+<div class="chat-container">
+    <p-card class="h-full chat-card">
+
+
+        <!-- Header -->
+        <div class="chat-header flex align-items-center gap-2">
+            <p-avatar icon="pi pi-user" shape="circle"></p-avatar>
+            <div>
+                <div class="title">Aceta Ai companion</div>
+                <small class="status">Online</small>
+            </div>
+        </div>
+
+
+        <!-- Messages -->
+        <!-- Messages -->
+        <p-scrollPanel #scrollPanel styleClass="chat-messages">
+            <div class="messages-wrapper">
+
+                <div *ngFor="let msg of messages" class="message-row" [ngClass]="msg.sender">
+
+                    @if (msg.sender === 'bot') {
+                    <p-avatar icon="pi pi-bolt"></p-avatar>
+                    }
+
+                    <div class="bubble">
+                        @if (isTyping && msg === messages[messages.length - 1]) {
+
+                            <app-loader></app-loader>
+                        <!-- </div> -->
+                        } @else {
+                            <div class="text">{{ msg.text }}</div> 
+                        }
+
+                        <div class="time">{{ msg.time | date:'shortTime' }}</div>
+                    </div>
+
+                    @if (msg.sender === 'user') {
+                    <p-avatar icon="pi pi-user"></p-avatar>
+                    }
+                </div>
+
+                <!-- typing indicator as a message -->
+
+            </div>
+        </p-scrollPanel>
+
+
+        <!-- Input -->
+        <div class="chat-input flex gap-1">
+            <textarea pInputTextarea rows="1" autoResize="true" [(ngModel)]="input" placeholder="Type a message..."
+                (keydown.enter)="send(); $event.preventDefault()"></textarea>
+
+            <button pButton icon="pi pi-send" (click)="send()" class="p-button-rounded p-button-primary"></button>
+        </div>
+
+
+    </p-card>
+</div>

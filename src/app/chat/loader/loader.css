@@ -1,0 +1,28 @@
+/* Spinner container for aligning items */
+.spinner-container {
+  display: flex;
+  align-items: center;  /* Vertically center the spinner and text */
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+/* Style for thinking text */
+.thinking-text {
+  font-size: 14px;
+  color: #f1e9e9;
+  margin: 0;  
+  animation: fadeInOut 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

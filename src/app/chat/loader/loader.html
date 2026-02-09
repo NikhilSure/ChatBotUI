@@ -1,0 +1,6 @@
+<div *ngIf="isLoading" class="spinner-container flex flex-row gap-2 align-items-center justify-content-center">
+  <!-- Loading spinner -->
+  <p-progressSpinner [style]="{width: '24px', height: '24px'}" animationDuration="1000"></p-progressSpinner>
+  <!-- Thinking text -->
+  <p class="thinking-text">{{ currentThinkingOption }}</p>
+</div>
